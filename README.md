@@ -1,6 +1,6 @@
 # mlops-assignment
 
-A machine learning project built with numpy, pandas, and scikit-learn, managed using a conda environment.
+A machine learning project using the Boston Housing dataset, built with numpy, pandas, and scikit-learn, managed using a conda environment.
 
 ---
 
@@ -35,19 +35,62 @@ pip install -r requirements.txt
 
 ---
 
+## Project Structure
+
+```
+mlops-assignment/
+├── boston.csv        # Boston Housing dataset
+├── train.py          # Main training script
+├── misc.py           # Reusable helper functions (load, preprocess, train, evaluate)
+├── requirements.txt  # Python dependencies
+└── README.md
+```
+
+---
+
 ## Running the Code
 
-After activating the environment, run any Python script with:
+### Switch to the correct branch
 
 ```bash
-python <script_name>.py
+git checkout dtree
 ```
 
-For example:
+### Activate the conda environment
 
 ```bash
-python main.py
+conda activate mlops-assignment
 ```
+
+### Run the training script
+
+```bash
+python train.py
+```
+
+**Expected output:**
+```
+Dataset loaded: 506 rows, 14 columns
+Train size: 404 | Test size: 102
+Model training complete.
+
+Model     : DecisionTreeRegressor
+MSE (test): 10.4161
+Avg CV MSE: 38.3089
+```
+
+---
+
+## How It Works
+
+- **`misc.py`** contains generic, reusable functions for any sklearn regression model:
+  - `load_data()` — loads the CSV dataset
+  - `preprocess_data()` — splits data into train/test sets
+  - `train_model()` — fits any sklearn-compatible model
+  - `evaluate_model()` — computes MSE on test data
+  - `average_cv_mse()` — computes average MSE via 5-fold cross-validation
+
+- **`train.py`** uses those functions to train a `DecisionTreeRegressor` on the Boston Housing dataset and reports the MSE.
 
 ---
 
