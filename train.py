@@ -2,13 +2,12 @@ from sklearn.tree import DecisionTreeRegressor
 
 from misc import load_data, preprocess_data, train_model, evaluate_model, average_cv_mse
 
-DATA_PATH = "boston.csv"
-TARGET_COL = "medv"
+TARGET_COL = "MEDV"
 
 
 def main():
     # 1. Load data
-    df = load_data(DATA_PATH)
+    df = load_data()
     print(f"Dataset loaded: {df.shape[0]} rows, {df.shape[1]} columns")
 
     # 2. Preprocess — train/test split

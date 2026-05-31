@@ -4,9 +4,21 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error
 
 
-def load_data(filepath):
-    """Load a CSV dataset into a pandas DataFrame."""
-    df = pd.read_csv(filepath)
+def load_data():
+    """Load the Boston housing dataset from the original CMU source."""
+    data_url = "http://lib.stat.cmu.edu/datasets/boston"
+    raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
+    # now we split this into data and target
+    data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
+    target = raw_df.values[1::2, 2]
+    # These are the Feature names based on the original dataset
+    feature_names = [
+        'CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE',
+        'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT'
+    ]
+    # Create a DataFrame
+    df = pd.DataFrame(data, columns=feature_names)
+    df['MEDV'] = target  # here MEDV is our target variable
     return df
 
 
