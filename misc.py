@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error
 def load_data():
     """Load the Boston housing dataset from the original CMU source."""
     data_url = "http://lib.stat.cmu.edu/datasets/boston"
-    raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
+    raw_df = pd.read_csv(data_url, sep=r"\s+", skiprows=22, header=None)
     # now we split this into data and target
     data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
     target = raw_df.values[1::2, 2]
