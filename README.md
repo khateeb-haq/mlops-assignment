@@ -75,10 +75,9 @@ mlops-assignment/
 conda activate mlops-assignment
 ```
 
-### DecisionTreeRegressor (`dtree` branch)
+### DecisionTreeRegressor
 
 ```bash
-git checkout dtree
 python train.py
 ```
 
@@ -93,10 +92,9 @@ MSE (test): 10.4161
 Avg CV MSE: 38.3089
 ```
 
-### KernelRidge (`kernelridge` branch)
+### KernelRidge
 
 ```bash
-git checkout kernelridge
 python train2.py
 ```
 
